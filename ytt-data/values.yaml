@@ -1,8 +1,8 @@
 #@data/values
 ---
 
-nameSpaceFE: acme-fitness
-nameSpaceBE: acme-fitness
+nameSpaceFE: acme
+nameSpaceBE: acme
 
 cartRedisPassword: password1
 catalogMongoPassword: password2
