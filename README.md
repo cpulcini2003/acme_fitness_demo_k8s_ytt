@@ -1,3 +1,53 @@
+# Demo of ACME Fitness Shop
+
+## Getting Started
+
+These instructions will allow you to run entire ACME Fitness Shop
+
+## Overview
+
+![Acmeshop Architecture](./acmeshop.png)
+
+## Instructions
+
+1. Clone this repository
+
+2. You will notice the following directory structure
+
+```text
+├── README.md
+├── acmeshop.png
+├── ytt-data
+│   ├── values.yaml
+│   ├── out
+│   ├── templ
+│       ├── cart-redis-total.yaml
+│       ├── cart-redis-total.yaml
+│       ├── catalog-total.yaml
+│       ├── users-redis-total.yaml
+│       ├── payment-total.yaml
+│       ├── users-total.yaml
+│       ├── order-total.yaml
+│       ├── secret-cart-redis-pass.yaml
+│       ├── users-db-initdb-configmap.yaml
+│       ├── secret-order-postgres-pass.yaml
+│       ├── users-db-total.yaml
+│       ├── cart-total.yaml
+│       ├── secret-users-redis-pass.yaml
+│       ├── frontend-total.yaml
+│       ├── secret-catalog-mongo-pass.yaml
+│       ├── catalog-db-total.yaml
+│       ├── point-of-sales-total.yaml
+│       ├── order-db-total.yaml
+│       ├── secret-users-mongo-pass.yaml
+└── traffic-generator
+    ├── README.md
+    ├── locustfile.py
+    └── requirements.txt
+```
+
+
+
 # ACMEFIT K8s 
 
 This repo contains a Polyglot demo application comprised of (presently) 6 microservices and 4 datastores.
@@ -11,31 +61,6 @@ The current version of the application passes JSON Web Tokens (JWT) for authenti
 ## ytt Automation #Added by Carlo Pulcini
 
 The directory ytt-data/templ contains ytt config files to generate a customized app yaml files by templating contents matched with data values stored in ytt-data/values.yaml
-
-#@data/values
----
-nameSpaceFE: acme-fitness
-nameSpaceBE: acme-fitness
-cartRedisPassword: password1
-catalogMongoPassword: password2
-orderPostgresPassword: password3
-usersMongoPassword: password4
-usersRedisPassword: password5
-harborProjectUrl: 10.220.38.244/test-env/
-harborImagePullSecrets:
-  - name: test-env-default-image-pull-secret
-cartTotalImage: acmeshop-cart
-cartRedisTotalImage: bitnami/redis
-catalogTotalImage: acmeshop-catalog
-catalogDbTotalImage: mongo:4
-paymentTotalImage: acmeshop-payment
-orderTotalImage: acmeshop-order
-orderDbTotalImage: postgres:9.5
-userTotalImage: acmeshop-user
-userDbTotalImage: mongo:4
-userRedisTotalImage: bitnami/redis
-frontEndTotalImage: acmeshop-front-end
-pointOfSalesImage: acmeshop-pos:v0.1.0-beta
 
 After entering the desider values in that file is it possible to generate app yaml files or directly execute kubectl apply/delete from ytt output
 
@@ -205,3 +230,9 @@ The current version of the application has been augmented with distributed traci
 To avoid issues with unresolvable hostnames, `JAEGER_AGENT_HOST` is set to `localhost` in all of the manifests in this repo. To use tracing, this value will need to be replaced. If using the `jaeger-all-in-one.yml` manifest included in this repo, this value should be changed to `jaeger.<jaeger namespace>`.
 
 It is strongly recommended that the `JAEGER_AGENT_PORT` values not be modified as the tracing library implementations for specific languages favor certain ports.
+
+
+
+### Additional Info
+
+The [traffic-generator](./traffic-generator) is based on **locust** and can be used to create various traffic patterns, if you need it for other demos associated with **Monitoring and Observability.**
