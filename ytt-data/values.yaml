@@ -1,0 +1,36 @@
+#@data/values
+---
+
+nameSpaceFE: acme-fitness
+nameSpaceBE: acme-fitness
+
+cartRedisPassword: password1
+catalogMongoPassword: password2
+orderPostgresPassword: password3
+usersMongoPassword: password4
+usersRedisPassword: password5
+
+
+harborProjectUrl: 10.220.38.244/test-env/
+harborImagePullSecrets:
+  - name: test-env-default-image-pull-secret
+
+cartTotalImage: acmeshop-cart
+cartRedisTotalImage: bitnami/redis
+
+catalogTotalImage: acmeshop-catalog
+catalogDbTotalImage: mongo:4
+
+paymentTotalImage: acmeshop-payment
+
+orderTotalImage: acmeshop-order
+orderDbTotalImage: postgres:9.5
+
+userTotalImage: acmeshop-user
+userDbTotalImage: mongo:4
+userRedisTotalImage: bitnami/redis
+
+frontEndTotalImage: acmeshop-front-end
+
+pointOfSalesImage: acmeshop-pos:v0.1.0-beta
+
