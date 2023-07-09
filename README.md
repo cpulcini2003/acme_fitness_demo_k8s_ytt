@@ -67,9 +67,12 @@ After entering the desider values in that file is it possible to generate app ya
 Before running the commands please remember to create the namespace and inside it the secret to allow access to your local registry if using it.
 
 Example 1: #THIS WILL RUN THE INSTALLATION   
+
 ytt -f templ/ -f values.yaml | kubectl apply -f-
 
+
 Example 2: #THIS WILL PREPARE yaml FILES FOR INSTALLATION AS DESCIBED BELOW
+
 ytt -f templ/ -f values.yaml --output-files out/ 
 
 
